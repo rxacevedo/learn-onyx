@@ -48,6 +48,31 @@
 
 ;; <<< BEGIN FILL ME IN >>>
 
-(defn build-lifecycles [])
+(def writer-lifecycle
+  {:lifecycle/before-task-start inject-writer-ch})
+
+(defn build-lifecycles
+  [{:lifecycle/task :
+    :lifecycle/calls :workshop.challenge-4-1/logger-lifecycle
+    :core.async/id (java.util.UUID/randomUUID)
+    :onyx/doc "Logs segments after each batch"}
+
+   {:lifecycle/task :read-segments
+    :lifecycle/calls :workshop.workshop-utils/in-calls
+    :core.async/id (java.util.UUID/randomUUID)
+    :onyx/doc "Injects the core.async reader channel"}
+
+   {:lifecycle/task :read-segments
+    :lifecycle/calls :onyx.plugin.core-async/reader-calls
+    :onyx/doc "core.async plugin base lifecycle"}
+
+   {:lifecycle/task :write-segments
+    :lifecycle/calls :workshop.challenge-4-1/writer-lifecycle
+    :core.async/id (java.util.UUID/randomUUID)
+    :onyx/doc "Injects the core.async writer channel"}
+
+   {:lifecycle/task :write-segments
+    :lifecycle/calls :onyx.plugin.core-async/writer-calls
+    :onyx/doc "core.async plugin base lifecycle"}])
 
 ;; <<< END FILL ME IN >>>

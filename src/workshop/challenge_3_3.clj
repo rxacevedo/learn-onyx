@@ -23,6 +23,13 @@
 
       ;; <<< BEGIN FILL ME IN PART 1 >>>
 
+      {:onyx/name :transform-name
+       :onyx/fn :workshop.challenge-3-3/transform-name
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       :onyx/doc "Prepend ~ and append ?"}
+
       ;; <<< END FILL ME IN PART 1 >>>
 
       {:onyx/name :write-segments
@@ -37,6 +44,9 @@
 ;;; Functions ;;;
 
 ;; <<< BEGIN FILL ME IN PART 2 >>>
+
+(defn transform-name [{:keys [name]}]
+  {:name (str "~" name "?")})
 
 ;; <<< END FILL ME IN  PART 2 >>>
 

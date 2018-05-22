@@ -1,5 +1,6 @@
 (ns workshop.challenge-3-1
-  (:require [workshop.workshop-utils :as u]))
+  (:require [workshop.workshop-utils :as u]
+            [clojure.string :as s]))
 
 ;;; Workflows ;;;
 
@@ -60,6 +61,12 @@
 ;;; Functions ;;;
 
 ;; <<< BEGIN FILL ME IN >>>
+
+(defn upper-case [{:keys [name]}]
+  {:name (.toUpperCase name)})
+
+(defn interpose-char [char {:keys [name]}]
+  {:name (s/join (interpose char name))})
 
 ;; <<< END FILL ME IN >>>
 
